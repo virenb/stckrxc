@@ -1,4 +1,4 @@
-import { MikroORM } from "@mikro-orm/core";
+import { MikroORM } from '@mikro-orm/core';
 import mikroConfig from './mikro-orm.config'
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
@@ -10,10 +10,8 @@ import { UserResolver } from './resolvers/user';
 import redis from 'redis'
 import session from 'express-session';
 import connectRedis from 'connect-redis';
-import { COOKIE_NAME, __prod__ } from "./constants";
+import { COOKIE_NAME, __prod__ } from './constants';
 import cors from 'cors';
-
-
 
 const main = async () => {
   const orm = await MikroORM.init(mikroConfig);
@@ -27,7 +25,7 @@ const main = async () => {
 
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: 'http://localhost:3000',
       credentials: true,
     })
   );
