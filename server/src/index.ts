@@ -12,8 +12,15 @@ import session from 'express-session';
 import connectRedis from 'connect-redis';
 import { COOKIE_NAME, __prod__ } from './constants';
 import cors from 'cors';
+import { createConnection } from 'typeorm';
 
 const main = async () => {
+  const conn = await createConnection({
+    type: 'postgres',
+    database: 'stckr2',
+    username: 'postgres',
+    password: 'postgres'
+  });
   const orm = await MikroORM.init(mikroConfig);
   await orm.getMigrator().up();
 
